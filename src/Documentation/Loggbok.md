@@ -3,7 +3,7 @@
 ## Inledning
 
 Det här är en loggbok för att underlätta processen och hålla ordning på vad som gjorts och ska göras.
-Varje dag för jag anteckningar över vad jag gjort, vad som som behövs härnäst och eventuella problem som dyker upp under processen, allt för att försöka skapa en struktur som funkar bra för mig och för att effektivisera och metodisera mitt arbete.
+Varje dag jag arbetar på projektet för jag anteckningar över vad jag gjort, vad som som behövs härnäst och eventuella problem som dyker upp under processen, allt för att försöka skapa en struktur som funkar bra för mig och för att effektivisera och metodisera mitt arbete.
 
 ### 14/4
 
