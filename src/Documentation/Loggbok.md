@@ -19,3 +19,13 @@ Att göra härnäst:
 Att göra därefter:
 
 - Välja CSS, Sass eller Tailwind och skapa en väldigt enkel första iteration av appen.
+
+### 17/4
+
+Skapat minivariant av Pokédex och fått en fungerande url med Weatherapi som testats i Insomnia. Börjat skapa en egen store, komponent, byggt på exemplet med Pokédex, men det fungerar inte att använda den i app.tsx.
+
+Att göra härnäst: flytta in koden i app.tsx och se om det fungerar där, felsök och skapa ett så enkelt fungerande get request som möjligt.
+
+Att göra därefter: Få koden att fungera i egen komponent eller store. Läs mer om store för att förstå hur det fungerar.
+
+Skriv ut väderdatan i browsern.
