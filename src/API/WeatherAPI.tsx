@@ -14,7 +14,7 @@ export const WeatherApi = () => {
       const result = await response.json();
       console.log(result);
 
-      setWeatherData(result.location.name);
+      setWeatherData([result.location]);
       toArray.push(result);
     } catch (error) {
       console.log(error);
@@ -23,20 +23,21 @@ export const WeatherApi = () => {
 
   useEffect(() => {
     getWeatherData();
-    console.log(weatherData);
-  });
+  }, []);
+  console.log(weatherData);
 
   return (
     <>
-      {weatherData.map((data) => {
-        return (
-          <div>
-            <ul>
-              <li>Current temperature: {data.temp_c}</li>
-            </ul>
-          </div>
-        );
-      })}
+      {weatherData.length < 0 &&
+        weatherData.map((data) => {
+          return (
+            <div>
+              <ul>
+                <li>Current temperature: {data.current.temp_c}</li>
+              </ul>
+            </div>
+          );
+        })}
     </>
   );
 };
