@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const weatherApi = () => {
+export const WeatherApi = () => {
   const [weatherData, setWeatherData] = useState<any[]>([]);
 
   const getWeatherData = async () => {
@@ -14,7 +14,7 @@ export const weatherApi = () => {
       const result = await response.json();
       console.log(result);
 
-      setWeatherData(result.location.paris);
+      setWeatherData(result.location.name);
       toArray.push(result);
     } catch (error) {
       console.log(error);
@@ -23,11 +23,20 @@ export const weatherApi = () => {
 
   useEffect(() => {
     getWeatherData();
+    console.log(weatherData);
   });
 
   return (
     <>
-      <h1>{weatherData}</h1>
+      {weatherData.map((data) => {
+        return (
+          <div>
+            <ul>
+              <li>Current temperature: {data.temp_c}</li>
+            </ul>
+          </div>
+        );
+      })}
     </>
   );
 };
