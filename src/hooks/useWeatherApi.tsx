@@ -1,40 +1,33 @@
 import { useState, useEffect } from "react";
 
-export const WeatherApi = () => {
+function useWeatherApi() {
   const [weatherData, setWeatherData] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [Error, setError] = useState<any>(null);
 
   const getWeatherData = async () => {
-    const toArray = [];
-
     try {
       const url = `http://api.weatherapi.com/v1/current.json?q=paris&key=e02f5c3118f543f68a6213438231704`;
 
       const response = await fetch(url);
-      console.log(response);
-      const result = await response.json();
-      console.log(result);
 
-      toArray.push(result);
-      setWeatherData(toArray);
+      const result = await response.json();
+
+      setWeatherData([result]);
     } catch (error) {
-      console.log(error);
+      setError(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getWeatherData();
   }, []);
   console.log(weatherData);
 
-  return (
-    <>
-      {weatherData.map((data: any) => {
-        return (
-          <div className="card">
-            {data.location.name}, {data.current.temp_c}
-          </div>
-        );
-      })}
-    </>
-  );
-};
+  return [weatherData, isLoading, Error];
+}
+
+export default useWeatherApi;

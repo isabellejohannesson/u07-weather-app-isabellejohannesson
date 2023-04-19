@@ -1,12 +1,14 @@
 import "./App.css";
-import { WeatherApi } from "./API/WeatherAPI";
-import { Header } from "./header/Header";
+import { Header } from "./components/header/Header";
+import { Main } from "./components/main/Main";
+
+import useWeatherApi from "./hooks/useWeatherApi";
 
 function App() {
   return (
     <div className="App">
       <Header></Header>
-      <WeatherApi></WeatherApi>
+      <Main></Main>
     </div>
   );
 }
