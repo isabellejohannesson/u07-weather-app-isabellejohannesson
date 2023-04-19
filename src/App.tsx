@@ -5,8 +5,8 @@ import { Header } from "./header/Header";
 function App() {
   return (
     <div className="App">
-      <WeatherApi></WeatherApi>
       <Header></Header>
+      <WeatherApi></WeatherApi>
     </div>
   );
 }

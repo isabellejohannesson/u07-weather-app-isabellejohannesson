@@ -29,3 +29,15 @@ Att göra härnäst: flytta in koden i app.tsx och se om det fungerar där, fels
 Att göra därefter: Få koden att fungera i egen komponent eller store. Läs mer om store för att förstå hur det fungerar.
 
 Skriv ut väderdatan i browsern.
+
+### 18/4
+
+Väderdatan skrivs ut i browsern och jag har just nu API-requestet i en egen komponent. Jag vill kunna ha en sökfunktion för att visa väder utifrån stad, men också visa väder direkt i startvy baserat på plats. Därför behöver jag ha API-requests i flera komponenter, vilket borde göras med en egen hook, som jag nu läst mer om.
+
+### 19/4
+
+Påbörjat en searchbar-komponent, men ska hålla mig till en sak i taget. Jag har läst igenom uppgiftsbeskrivningen igen och inser att sök-funktion för att kunna söka upp en plats är extra-features, så jag ska därför se till att först nå grundkraven.
+
+Att göra härnäst: Skriva ut all data som behövs och skapa knappar för platser.
+
+Extra: Skapa en hook som gör att jag kan implementera väderAPIrequests i flera komponenter.

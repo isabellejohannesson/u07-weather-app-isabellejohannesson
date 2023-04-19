@@ -30,7 +30,7 @@ export const WeatherApi = () => {
     <>
       {weatherData.map((data: any) => {
         return (
-          <div>
+          <div className="card">
             {data.location.name}, {data.current.temp_c}
           </div>
         );
