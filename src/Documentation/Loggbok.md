@@ -58,6 +58,6 @@ Annat som återstår: kunna med en knapp ändra mellan Fahrenheit och Celsius, s
 
 _Uppdatering_:
 
-- Jag har nu fungerande routing, men lyckas däremot inte få ihop koordinaterna från min geolocation med väderdatan. Jag behöver skapa en mindre komplex version av koden, som liknar den Sebastian gjorde på uppvisningen från 19/4. Jag behöver få bättre struktur på vad som ska visas var i min app och exakt vilka komponenter som ska bero på varandra. Detta är prio!
+- ~~Jag har nu fungerande routing, men lyckas däremot inte få ihop koordinaterna från min geolocation med väderdatan. Jag behöver skapa en mindre komplex version av koden, som liknar den Sebastian gjorde på uppvisningen från 19/4. Jag behöver få bättre struktur på vad som ska visas var i min app och exakt vilka komponenter som ska bero på varandra. Detta är prio!~~ FIXAT!
 
 - Det är problem med att skriva ut astro-datan (soluppgång och solnedgång), kolla närmare på vad som är fel. Kanske löser det sig när jag skapar min request enbart baserat på forecast som i Sebastians exempel. Enligt hur designen ser ut i WeatherApi ligger astro under forecast, sedan forecastday, men inget skrivs ut när jag försökt med detta, inte heller med data.forecast.astro.
