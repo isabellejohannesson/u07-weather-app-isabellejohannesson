@@ -10,7 +10,9 @@ function useWeatherApi() {
   const getWeatherData = async () => {
     try {
       const url =
-        `https://api.weatherapi.com/v1/current.json?q=paris&key=` + appKey;
+        `http://api.weatherapi.com/v1/forecast.json?key=` +
+        appKey +
+        `&q=48.8567,2.3508&days=5&aqi=no&alerts=yes`;
 
       const response = await fetch(url);
 
