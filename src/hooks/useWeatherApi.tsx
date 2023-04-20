@@ -5,9 +5,12 @@ function useWeatherApi() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<any>(null);
 
+  const appKey: any = "e02f5c3118f543f68a6213438231704";
+
   const getWeatherData = async () => {
     try {
-      const url = `https://api.weatherapi.com/v1/current.json?q=paris&key=e02f5c3118f543f68a6213438231704`;
+      const url =
+        `https://api.weatherapi.com/v1/current.json?q=paris&key=` + appKey;
 
       const response = await fetch(url);
 
