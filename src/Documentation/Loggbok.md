@@ -41,3 +41,17 @@ Påbörjat en searchbar-komponent, men ska hålla mig till en sak i taget. Jag h
 Att göra härnäst: Skriva ut all data som behövs och skapa knappar för platser.
 
 Extra: Skapa en hook som gör att jag kan implementera väderAPIrequests i flera komponenter.
+
+### 20/4
+
+Fixade att kunna skriva ut datan som behövs och skapade en fungerande hook för att få väderdata. I mitt API, WeatherAPI, finns möjlighet att få en prognos för 1-14 dagar i PRO-versionen, men sedan går prognosen över till gratisversionen som bara har tre dagars prognos. Därför tänker jag: spela in en demo av min app medan den fortfarande har fem dagars prognos, då provperioden går ut 1/5. Utöver det kommer jag försöka skapa en alternativ variant där tre dagar visas upp samt någon extra information som exempelvis weather alerts.
+
+Att göra härnäst: använda geolocation och skapa möjlighet att visa väder baserat på sina koordinater. Titta på uppvisningen från igår och basera min kod på den.
+
+Därefter: lägga till soluppgång och -nedgång (astro kommer automatiskt med forecast, liksom current, därför kan jag ha samma url till dessa).
+
+Därefter: skapa manuell sökning på något sätt, antingen via knappar för städer eller nån form av sökfunktion.
+
+Även: jobba vidare med desing, som blivit bortprioriterat hittills.
+
+Annat som återstår: kunna med en knapp ändra mellan Fahrenheit och Celsius, samt andra enheter som är specifika för respektive system.

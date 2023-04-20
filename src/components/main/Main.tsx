@@ -1,7 +1,7 @@
 import useWeatherApi from "../../hooks/useWeatherApi";
 
 export function Main() {
-  /* interface WeatherData {
+  interface weatherData {
     location: {
       name: string;
       country: string;
@@ -12,7 +12,7 @@ export function Main() {
       humidity: number;
       wind_mph: number;
     };
-  } */
+  }
 
   const [weatherData = [], isLoading = false, error = null] = useWeatherApi();
 
@@ -39,7 +39,6 @@ export function Main() {
               <li>Current temperature: {data.current.temp_c} degrees C.</li>
               <li>Air humidity: {data.current.humidity} %.</li>
               <li>Wind: {data.current.wind_mph} mph.</li>
-              <li></li>
             </ul>
           </>
         );
