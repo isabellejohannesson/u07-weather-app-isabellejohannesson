@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Link to="geo">Set geolocation</Link>
+        <Link to="geo">Set profile info</Link>
         <hr />
         <App></App>
       </>
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     path: "geo",
     element: (
       <>
-        <Link to="/">Go home</Link>
+        <Link to="/">Search weather</Link>
         <hr />
         <GetLocation></GetLocation>
       </>

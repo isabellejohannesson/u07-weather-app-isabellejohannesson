@@ -1,18 +1,25 @@
 import { useState, useEffect } from "react";
+import useLocationStore from "../stores/useLocationStore";
 
 function useWeatherApi() {
   const [weatherData, setWeatherData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<any>(null);
+  const [position] = useLocationStore((state: any) => [state.position]);
 
   const appKey: any = "e02f5c3118f543f68a6213438231704";
 
   const getWeatherData = async () => {
+    console.log(position);
     try {
       const url =
         `https://api.weatherapi.com/v1/forecast.json?key=` +
         appKey +
-        `&q=48.8567,2.3508&days=5&aqi=no&alerts=yes`;
+        `&q=` +
+        position.lat +
+        `,` +
+        position.lng +
+        `&days=5&aqi=no&alerts=yes`;
 
       const response = await fetch(url);
 
