@@ -8,11 +8,13 @@ import useWeatherApi from "./hooks/useWeatherApi";
 export function DisplayWeather() {
   interface weatherData {
     location: {
+      id: 1;
       name: string;
       country: string;
       localtime: string;
     };
     current: {
+      id: 2;
       temp_c: number;
       humidity: number;
       wind_mph: number;
@@ -40,11 +42,11 @@ export function DisplayWeather() {
               <p>{data.location.localtime}</p>
             </div>
 
-            <ul>
-              <li>Current temperature: {data.current.temp_c} degrees C.</li>
-              <li>Air humidity: {data.current.humidity} %.</li>
-              <li>Wind: {data.current.wind_mph} mph.</li>
-            </ul>
+            <div>
+              <p>Current temperature: {data.current.temp_c} degrees C.</p>
+              <p>Air humidity: {data.current.humidity} %.</p>
+              <p>Wind: {data.current.wind_mph} mph.</p>
+            </div>
           </>
         );
       })}
