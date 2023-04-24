@@ -65,3 +65,4 @@ _Uppdatering_:
 ### 24/4
 
 Jag har fått handledning under förmiddagen eftersom error "r.location is undefined" uppstår i min deployade version av appen. Ingen lösning hittades under handledning, så jag har tittat vidare själv och upptäckt att min api-key är undefined. Försöker nu hitta en lösning på det.
+_Uppdatering_: Det verkar ha med .env att göra, att den inte kan läsa av min variabel av någon anledning i produktion. Det fungerar lokalt, men så fort innehållet ska renderas i deployen dyker felet upp igen. Nu när jag skrev ut app-key i koden istället, som jag hade det från början, försvinner felet och appen funkar. Ta handledning igen imorgon!
