@@ -73,6 +73,12 @@ export function DisplayWeather() {
               <p>
                 Condition: {data.forecast.forecastday[0].day.condition.text}.
               </p>
+              <figure>
+                <img
+                  src={data.forecast.forecastday[0].day.condition.icon}
+                  alt="weather icon"
+                ></img>
+              </figure>
             </div>
 
             <div className="card">
