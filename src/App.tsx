@@ -64,6 +64,8 @@ export function DisplayWeather() {
             <div className="card">
               <p>Air humidity: {data.current.humidity} %.</p>
               <p>Wind: {data.current.wind_mph} mph.</p>
+              <p>Sunrise: {data.forecast.forecastday[0].astro.sunrise}</p>
+              <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
             </div>
           </>
         );
