@@ -16,6 +16,7 @@ export function DisplayWeather() {
     current: {
       id: 2;
       temp_c: number;
+      temp_f: number;
       humidity: number;
       wind_mph: number;
     };
@@ -26,10 +27,23 @@ export function DisplayWeather() {
           date: number;
           day: {
             condition: {
-              text: "";
-              icon: "";
+              text: string;
+              icon: string;
             };
           };
+          astro: any;
+          hour: [
+            {
+              time: number;
+              temp_c: number;
+              temp_f: number;
+
+              condition: {
+                text: string;
+                icon: string;
+              };
+            }
+          ];
         }
       ];
     };
@@ -66,6 +80,16 @@ export function DisplayWeather() {
               <p>Wind: {data.current.wind_mph} mph.</p>
               <p>Sunrise: {data.forecast.forecastday[0].astro.sunrise}</p>
               <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
+            </div>
+
+            <div className="card">
+              {data.forecast.forecastday[0].hour.map((hour: any) => (
+                <div key={hour.time}>
+                  <p>Time: {hour.time}</p>
+                  <p>Temperature: {hour.temp_c} degrees C</p>
+                  <p>Condition: {hour.condition.text}</p>
+                </div>
+              ))}
             </div>
           </>
         );
