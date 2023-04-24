@@ -7,7 +7,7 @@ function useWeatherApi() {
   const [error, setError] = useState<any>(null);
   const [position] = useLocationStore((state: any) => [state.position]);
 
-  const appKey: any = import.meta.env.VITE_API_KEY;
+  const appKey = import.meta.env.VITE_API_KEY;
 
   const getWeatherData = async () => {
     console.log(position);
