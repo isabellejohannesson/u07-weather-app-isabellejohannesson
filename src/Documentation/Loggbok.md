@@ -60,9 +60,19 @@ _Uppdatering_:
 
 - ~~Jag har nu fungerande routing, men lyckas däremot inte få ihop koordinaterna från min geolocation med väderdatan. Jag behöver skapa en mindre komplex version av koden, som liknar den Sebastian gjorde på uppvisningen från 19/4. Jag behöver få bättre struktur på vad som ska visas var i min app och exakt vilka komponenter som ska bero på varandra. Detta är prio!~~ FIXAT!
 
-- Det är problem med att skriva ut astro-datan (soluppgång och solnedgång), kolla närmare på vad som är fel. Kanske löser det sig när jag skapar min request enbart baserat på forecast som i Sebastians exempel. Enligt hur designen ser ut i WeatherApi ligger astro under forecast, sedan forecastday, men inget skrivs ut när jag försökt med detta, inte heller med data.forecast.astro.
+- ~~Det är problem med att skriva ut astro-datan (soluppgång och solnedgång), kolla närmare på vad som är fel. Kanske löser det sig när jag skapar min request enbart baserat på forecast som i Sebastians exempel. Enligt hur designen ser ut i WeatherApi ligger astro under forecast, sedan forecastday, men inget skrivs ut när jag försökt med detta, inte heller med data.forecast.astro.~~ Fungerar, [] fattades, då det är en array av objekt.
 
 ### 24/4
 
 Jag har fått handledning under förmiddagen eftersom error "r.location is undefined" uppstår i min deployade version av appen. Ingen lösning hittades under handledning, så jag har tittat vidare själv och upptäckt att min api-key är undefined. Försöker nu hitta en lösning på det.
 _Uppdatering_: Det verkar ha med .env att göra, att den inte kan läsa av min variabel av någon anledning i produktion. Det fungerar lokalt, men så fort innehållet ska renderas i deployen dyker felet upp igen. Nu när jag skrev ut app-key i koden istället, som jag hade det från början, försvinner felet och appen funkar. Ta handledning igen imorgon!
+
+### 25/4
+
+Nu kan jag visa upp en forecast, och beslutade mig för att ändra till tre dagar istället för fem dagar, då min provperiod på pro-version av WeatherAPI kommer gå ut den 1/5 och uppgiften inte kommer hinna rättas innan dess. Därför ska jag försöka få ut alerts istället, så att alla kan se aktuella väderhändelser. Jag behöver också kovertera enheter. Jag ska också göra en searchbar för dem som inte vill ange sin plats, men måste då använda en annan url.
+
+Att göra härnäst: Konvertera enheter med en knapp i en egen komponent så det går att använda den på fler ställen. Kanske är headern ett bra ställe för det?
+
+Därefter: Göra färdigt searchbar och bestämma mig för om jag ska ha routing eller inte.
+
+Efter det: Design!

@@ -7,11 +7,9 @@ function useWeatherApi() {
   const [error, setError] = useState<any>(null);
   const [position] = useLocationStore((state: any) => [state.position]);
 
-  const appKey = "e02f5c3118f543f68a6213438231704";
-  /* import.meta.env.VITE_API_KEY; */
+  const appKey = import.meta.env.VITE_API_KEY;
 
   const getWeatherData = async () => {
-    console.log(position);
     try {
       const url =
         `https://api.weatherapi.com/v1/forecast.json?key=` +
