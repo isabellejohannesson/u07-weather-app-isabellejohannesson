@@ -1,7 +1,7 @@
 import useWeatherApi from "../../hooks/useWeatherApi";
 import { useState } from "react";
 
-export function DisplayWeather() {
+export function DisplayWeather(props: any) {
   interface weatherData {
     location: {
       id: 1;
@@ -46,11 +46,6 @@ export function DisplayWeather() {
   }
 
   const [weatherData = [], isLoading = false, error = null] = useWeatherApi();
-  const [tempUnit, setTempUnit] = useState("temp_c");
-
-  const toggleTempUnit = () => {
-    setTempUnit((unit) => (unit === "temp_c" ? "temp_f" : "temp_c"));
-  };
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -72,12 +67,12 @@ export function DisplayWeather() {
               <p>
                 <p>
                   Current temperature:{" "}
-                  {tempUnit === "Celsius"
+                  {props.tempUnit === "temp_c"
                     ? data.current.temp_c + " degrees C."
                     : data.current.temp_f + " degrees F."}
                 </p>
               </p>
-              <button onClick={toggleTempUnit}>Toggle temperature unit</button>
+
               <p>Today: {data.forecast.forecastday[0].date}</p>
               <p>
                 Condition: {data.forecast.forecastday[0].day.condition.text}.
