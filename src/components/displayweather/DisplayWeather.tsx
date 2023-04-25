@@ -15,6 +15,7 @@ export function DisplayWeather(props: any) {
       temp_f: number;
       humidity: number;
       wind_mph: number;
+      wind_kph: number;
     };
     forecast: {
       forecastday: [
@@ -87,7 +88,12 @@ export function DisplayWeather(props: any) {
 
             <div className="card">
               <p>Air humidity: {data.current.humidity} %.</p>
-              <p>Wind: {data.current.wind_mph} mph.</p>
+              <p>
+                Wind:{" "}
+                {props.distanceTimeUnit === "wind_mph"
+                  ? data.current.wind_mph + " miles per hour."
+                  : data.current.wind_kph + " kilometers per hour."}
+              </p>
               <p>Sunrise: {data.forecast.forecastday[0].astro.sunrise}</p>
               <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
             </div>
@@ -96,7 +102,12 @@ export function DisplayWeather(props: any) {
               {data.forecast.forecastday[0].hour.map((hour: any) => (
                 <div key={hour.time}>
                   <p>Time: {hour.time}</p>
-                  <p>Temperature: {hour.temp_c} degrees C</p>
+                  <p>
+                    Temperature:{" "}
+                    {props.tempUnit === "temp_c"
+                      ? hour.temp_c + " degrees C."
+                      : hour.temp_f + " degrees F."}{" "}
+                  </p>
                   <p>Condition: {hour.condition.text}</p>
                 </div>
               ))}
