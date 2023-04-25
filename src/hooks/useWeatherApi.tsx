@@ -13,38 +13,18 @@ function useWeatherApi() {
 
   const appKey = import.meta.env.VITE_API_KEY;
 
-  const getWeatherBySearchQuery = async () => {
-    try {
-      const url =
-        `https://api.weatherapi.com/v1/forecast.json?key=` +
-        appKey +
-        `&q=` +
-        searchQuery +
-        `&days=3&aqi=no&alerts=yes`;
-
-      const response = await fetch(url);
-
-      const result = await response.json();
-      console.log(result);
-
-      setWeatherData([result]);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const getWeatherData = async () => {
     try {
-      const url =
-        `https://api.weatherapi.com/v1/forecast.json?key=` +
-        appKey +
-        `&q=` +
-        position.lat +
-        `,` +
-        position.lng +
-        `&days=3&aqi=no&alerts=yes`;
+      let url = `https://api.weatherapi.com/v1/forecast.json?key=` + appKey;
+      if (searchQuery) {
+        url += `&q=` + searchQuery + `&days=3&aqi=no&alerts=yes`;
+      } else
+        url +=
+          `&q=` +
+          position.lat +
+          `,` +
+          position.lng +
+          `&days=3&aqi=no&alerts=yes`;
 
       const response = await fetch(url);
 
@@ -62,7 +42,7 @@ function useWeatherApi() {
   useEffect(() => {
     setIsLoading(true);
     getWeatherData();
-  }, []);
+  }, [searchQuery]);
   console.log(weatherData);
 
   return [weatherData, isLoading, error];

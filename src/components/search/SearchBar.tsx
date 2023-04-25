@@ -1,3 +1,5 @@
+import useSearchQueryStore from "../../stores/useSearchQueryStore";
+
 export const SearchBar = () => {
   return (
     <div className="searchbar-container">
