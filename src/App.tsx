@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import { Header } from "./components/header/Header";
 import { DisplayWeather } from "./components/displayweather/DisplayWeather";
+import { SearchBar } from "./components/search/SearchBar";
 
 function App() {
   const [tempUnit, setTempUnit] = useState("temp_c");
@@ -14,6 +15,7 @@ function App() {
         setTempUnit={setTempUnit}
         setDistanceTimeUnit={setDistanceTimeUnit}
       ></Header>
+      <SearchBar></SearchBar>
       <DisplayWeather
         tempUnit={tempUnit}
         setTempUnit={setTempUnit}

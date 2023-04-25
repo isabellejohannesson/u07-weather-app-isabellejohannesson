@@ -76,3 +76,5 @@ Att göra härnäst: Konvertera enheter med en knapp i en egen komponent så det
 Därefter: Göra färdigt searchbar och bestämma mig för om jag ska ha routing eller inte.
 
 Efter det: Design!
+
+_Uppdatering_ Nu är det löst med .env, som framkallade "r.location is undefined". Jag hade missat att lägga in variabeln i Netlify och efter att detta blev gjort funkar allt. Enhetskonverteringen är klar, och går att göra med två knappar i headern. De ligger globalt i app.tsx och skickas som props in i Header och DisplayWeather. Jag har också fått hjälp att komma vidare i min searchquery under handledningen, men eftersom vi inte kom längre bestämde vi att vi undersöker på varsitt håll och jag återkommer imorgon om jag inte hittat någon fungerande lösning. Jag ska också bygga upp själva sökfältet så att det går att testa till imorgon, om jag återkommer då.
