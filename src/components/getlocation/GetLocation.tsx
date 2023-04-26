@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import useLocationStore from "../../stores/useLocationStore";
 
-interface GetLocationProps {
-  handleGetLocationUsed: () => void;
-}
-
-export const GetLocation = ({ handleGetLocationUsed }: GetLocationProps) => {
+export const GetLocation = () => {
   const [status, setStatus] = useState("");
   const [position, setPosition] = useLocationStore((state: any) => [
     state.position,
@@ -23,17 +19,12 @@ export const GetLocation = ({ handleGetLocationUsed }: GetLocationProps) => {
       (pos) => {
         setStatus("");
         setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        handleGetLocationUsed();
       },
       () => {
         setStatus("Unable to retrieve your position");
       }
     );
   };
-
-  useEffect(() => {
-    getLocation();
-  }, []);
 
   return (
     <div>

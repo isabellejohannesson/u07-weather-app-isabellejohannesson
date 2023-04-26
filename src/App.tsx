@@ -9,11 +9,6 @@ import { GetLocation } from "./components/getlocation/GetLocation";
 function App() {
   const [tempUnit, setTempUnit] = useState("temp_c");
   const [distanceTimeUnit, setDistanceTimeUnit] = useState("mph");
-  const [getLocationUsed, setGetLocationUsed] = useState(false);
-
-  const handleGetLocationUsed = () => {
-    setGetLocationUsed(true);
-  };
 
   return (
     <div className="App">
@@ -21,7 +16,6 @@ function App() {
         setTempUnit={setTempUnit}
         setDistanceTimeUnit={setDistanceTimeUnit}
       ></Header>
-      <GetLocation handleGetLocationUsed={handleGetLocationUsed}></GetLocation>
       <SearchBar></SearchBar>
       <DisplayWeather
         tempUnit={tempUnit}
