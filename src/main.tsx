@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { GetLocation } from "./components/getlocation/GetLocation";
 
-const router = createBrowserRouter([
+/* const router = createBrowserRouter([
   {
     path: "/",
     element: (
@@ -34,4 +34,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <RouterProvider router={router} />
+);
+ */
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <App />
 );

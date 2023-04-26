@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import useLocationStore from "../../stores/useLocationStore";
 
-export const GetLocation = () => {
+interface GetLocationProps {
+  handleGetLocationUsed: () => void;
+}
+
+export const GetLocation = ({ handleGetLocationUsed }: GetLocationProps) => {
   const [status, setStatus] = useState("");
   const [position, setPosition] = useLocationStore((state: any) => [
     state.position,
     state.setPosition,
   ]);
-  const [isUsingGeolocation, setIsUsingGeolocation] = useState(false);
 
   const getLocation = () => {
     if (!navigator.geolocation) {
@@ -20,13 +23,17 @@ export const GetLocation = () => {
       (pos) => {
         setStatus("");
         setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        setIsUsingGeolocation(true);
+        handleGetLocationUsed();
       },
       () => {
         setStatus("Unable to retrieve your position");
       }
     );
   };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   return (
     <div>
