@@ -80,3 +80,11 @@ Efter det: Design!
 _Uppdatering_ Nu är det löst med .env, som framkallade "r.location is undefined". Jag hade missat att lägga in variabeln i Netlify och efter att detta blev gjort funkar allt. Enhetskonverteringen är klar, och går att göra med två knappar i headern. De ligger globalt i app.tsx och skickas som props in i Header och DisplayWeather. Jag har också fått hjälp att komma vidare i min searchquery under handledningen, men eftersom vi inte kom längre bestämde vi att vi undersöker på varsitt håll och jag återkommer imorgon om jag inte hittat någon fungerande lösning. Jag ska också bygga upp själva sökfältet så att det går att testa till imorgon, om jag återkommer då.
 
 _Uppdatering 2_ Jag verkar ha lyckats villkora url:en så den tar antingen searchquery eller position via geolocation!
+
+### 26/4
+
+Jag har nu kopplat ihop min searchbar med min store och lyckats få datan att skrivas ut i displayweather! Det fungerar med både geolocation och search! Jag har även lyckats skriva ut alerts, men behöver lösa så det inte renderas dubbelt. Kanske måste jag ändå flytta kod till andra komponenter, då jag inte vill att all data ska visas på samma gång, utan att man ska kunna klicka exempelvis på forecast för att få mer information. Det kanske har att göra med fragments, och jag ska se om jag lyckas lösa dubbelrenderingen när jag flyttat koden.
+
+Att göra härnäst: Bestämma vilken data som ska visas var och när, samt skapa fler komponenter, kanske med routing, kanske med design med nedfällbara listor för att lyckas med detta.
+
+Att göra sen: fortfarande design, som fått stå tillbaka för att få all funktionalitet på plats.

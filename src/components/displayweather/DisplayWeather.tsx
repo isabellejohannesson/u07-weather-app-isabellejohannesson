@@ -3,6 +3,10 @@ import { useState } from "react";
 
 export function DisplayWeather(props: any) {
   interface weatherData {
+    alerts: {
+      alert: [];
+    };
+
     location: {
       id: 1;
       name: string;
@@ -58,10 +62,23 @@ export function DisplayWeather(props: any) {
 
   return (
     <>
-      {weatherData.map((data: any) => {
+      {weatherData.map((data: any, index: number) => {
         return (
           <>
-            <div className="card">
+            <div className="card" id="alert" key={index}>
+              {data.alerts.alert.length > 0 ? (
+                <ul>
+                  {data.alerts.alert.map((alert: any, index: number) => (
+                    <li key={index}>
+                      {alert.headline} ({alert.category}): {alert.desc}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                "no alerts"
+              )}
+            </div>
+            <div className="card" key={index}>
               <h2>{data.location.name}</h2>
               <p>{data.location.country}</p>
               <p>{data.location.localtime}</p>
@@ -86,7 +103,7 @@ export function DisplayWeather(props: any) {
               </figure>
             </div>
 
-            <div className="card">
+            <div className="card" key={index}>
               <p>Air humidity: {data.current.humidity} %.</p>
               <p>
                 Wind:{" "}
@@ -98,19 +115,21 @@ export function DisplayWeather(props: any) {
               <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
             </div>
 
-            <div className="card">
-              {data.forecast.forecastday[0].hour.map((hour: any) => (
-                <div key={hour.time}>
-                  <p>Time: {hour.time}</p>
-                  <p>
-                    Temperature:{" "}
-                    {props.tempUnit === "temp_c"
-                      ? hour.temp_c + " degrees C."
-                      : hour.temp_f + " degrees F."}{" "}
-                  </p>
-                  <p>Condition: {hour.condition.text}</p>
-                </div>
-              ))}
+            <div className="card" key={index}>
+              {data.forecast.forecastday[0].hour.map(
+                (hour: any, index: number) => (
+                  <div key={hour.time}>
+                    <p>Time: {hour.time}</p>
+                    <p>
+                      Temperature:{" "}
+                      {props.tempUnit === "temp_c"
+                        ? hour.temp_c + " degrees C."
+                        : hour.temp_f + " degrees F."}{" "}
+                    </p>
+                    <p>Condition: {hour.condition.text}</p>
+                  </div>
+                )
+              )}
             </div>
           </>
         );
