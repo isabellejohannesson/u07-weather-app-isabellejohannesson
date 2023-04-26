@@ -13,11 +13,11 @@ function useWeatherApi() {
 
   const appKey = import.meta.env.VITE_API_KEY;
 
-  const getWeatherData = async () => {
+  const getWeatherData = async (currentSearchQuery: any) => {
     try {
       let url = `https://api.weatherapi.com/v1/forecast.json?key=` + appKey;
-      if (searchQuery) {
-        url += `&q=` + searchQuery + `&days=3&aqi=no&alerts=yes`;
+      if (currentSearchQuery) {
+        url += `&q=` + currentSearchQuery + `&days=3&aqi=no&alerts=yes`;
       } else
         url +=
           `&q=` +
@@ -41,7 +41,7 @@ function useWeatherApi() {
 
   useEffect(() => {
     setIsLoading(true);
-    getWeatherData();
+    getWeatherData(searchQuery);
   }, [searchQuery]);
   console.log(weatherData);
 

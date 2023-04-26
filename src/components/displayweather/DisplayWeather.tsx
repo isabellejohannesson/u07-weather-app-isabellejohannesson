@@ -70,12 +70,13 @@ export function DisplayWeather(props: any) {
                 <ul>
                   {data.alerts.alert.map((alert: any, index: number) => (
                     <li key={index}>
-                      {alert.headline} ({alert.category}): {alert.desc}
+                      {alert.headline} ({alert.category}): {alert.desc}{" "}
+                      {alert.effective} {alert.expires}
                     </li>
                   ))}
                 </ul>
               ) : (
-                "no alerts"
+                ""
               )}
             </div>
             <div className="card" key={index}>

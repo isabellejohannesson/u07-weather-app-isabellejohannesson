@@ -7,6 +7,7 @@ export const GetLocation = () => {
     state.position,
     state.setPosition,
   ]);
+  const [isUsingGeolocation, setIsUsingGeolocation] = useState(false);
 
   const getLocation = () => {
     if (!navigator.geolocation) {
@@ -19,6 +20,7 @@ export const GetLocation = () => {
       (pos) => {
         setStatus("");
         setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        setIsUsingGeolocation(true);
       },
       () => {
         setStatus("Unable to retrieve your position");

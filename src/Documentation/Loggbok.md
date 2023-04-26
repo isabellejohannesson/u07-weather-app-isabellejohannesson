@@ -88,3 +88,5 @@ Jag har nu kopplat ihop min searchbar med min store och lyckats få datan att sk
 Att göra härnäst: Bestämma vilken data som ska visas var och när, samt skapa fler komponenter, kanske med routing, kanske med design med nedfällbara listor för att lyckas med detta.
 
 Att göra sen: fortfarande design, som fått stå tillbaka för att få all funktionalitet på plats.
+
+_Uppdatering_ PRIO: när man skickar in sina koordinater efter att man sökt manuellt, uppdateras inte informationen. Alltså behöver jag nån slags refresh?
