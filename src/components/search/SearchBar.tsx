@@ -23,7 +23,7 @@ export const SearchBar = () => {
 
   return (
     <>
-      <div className="searchbar-container">
+      <section className="searchbar-container">
         <form className="searchbar" onSubmit={getSearchQuery}>
           <input
             type="text"
@@ -36,7 +36,7 @@ export const SearchBar = () => {
             Clear search
           </button>
         </form>
-      </div>
+      </section>
     </>
   );
 };

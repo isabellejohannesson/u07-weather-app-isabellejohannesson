@@ -1,6 +1,8 @@
 import useWeatherApi from "../../hooks/useWeatherApi";
 import { useState } from "react";
 import { WholeForecast } from "../wholeforecast/WholeForecast";
+import useLocationStore from "../../stores/useLocationStore";
+import { v4 as uuidv4 } from "uuid";
 
 export function DisplayWeather(props: any) {
   const [showWholeForecast, setShowWholeForecast] = useState(false);
@@ -68,11 +70,11 @@ export function DisplayWeather(props: any) {
       {weatherData.map((data: any, index: number) => {
         return (
           <>
-            <div className="card" id="alert" key={index}>
+            <div className="card" id="alert">
               {data.alerts.alert.length > 0 ? (
                 <ul>
                   {data.alerts.alert.map((alert: any, index: number) => (
-                    <li key={index}>
+                    <li key={uuidv4()}>
                       {alert.headline} ({alert.category}): {alert.desc}{" "}
                       {alert.effective} {alert.expires}
                     </li>
@@ -82,7 +84,7 @@ export function DisplayWeather(props: any) {
                 ""
               )}
             </div>
-            <div className="card" key={index} id="summaryWeather">
+            <div className="card" id="summaryWeather">
               <h2>{data.location.name}</h2>
               <h3>{data.location.country}</h3>
               <p>{data.location.localtime}</p>
@@ -101,13 +103,15 @@ export function DisplayWeather(props: any) {
               </p>
             </div>
 
-            <div className="card" key={index} id="forecast">
+            <div className="card" id="forecast">
               <ul>
-                <li key={index}>Today: {data.forecast.forecastday[0].date}</li>
-                <li key={index}>
+                <li key={uuidv4()}>
+                  Today: {data.forecast.forecastday[0].date}
+                </li>
+                <li key={uuidv4()}>
                   Condition: {data.forecast.forecastday[0].day.condition.text}.
                 </li>
-                <li key={index}>
+                <li key={uuidv4()}>
                   <figure>
                     <img
                       src={data.forecast.forecastday[0].day.condition.icon}
@@ -118,12 +122,77 @@ export function DisplayWeather(props: any) {
               </ul>
             </div>
 
-            <button type="button" onClick={() => setShowWholeForecast(true)}>
-              See forecast for next three days
-            </button>
-            {showWholeForecast && <WholeForecast />}
+            <div
+              className={showWholeForecast ? "card threedayforecast" : "card"}
+            >
+              {showWholeForecast && (
+                <>
+                  <h2>{data.location.name}</h2>
+                  <ul>
+                    <li key={uuidv4()}>
+                      Today: {data.forecast.forecastday[0].date}
+                    </li>
+                    <li key={uuidv4()}>
+                      Condition:{" "}
+                      {data.forecast.forecastday[0].day.condition.text}.
+                    </li>
+                    <li key={uuidv4()}>
+                      <figure>
+                        <img
+                          src={data.forecast.forecastday[0].day.condition.icon}
+                          alt="weather icon"
+                        ></img>
+                      </figure>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li key={uuidv4()}>
+                      Today: {data.forecast.forecastday[1].date}
+                    </li>
+                    <li key={uuidv4()}>
+                      Condition:{" "}
+                      {data.forecast.forecastday[1].day.condition.text}.
+                    </li>
+                    <li key={uuidv4()}>
+                      <figure>
+                        <img
+                          src={data.forecast.forecastday[1].day.condition.icon}
+                          alt="weather icon"
+                        ></img>
+                      </figure>
+                    </li>
+                  </ul>
+                  <ul>
+                    <li key={uuidv4()}>
+                      Today: {data.forecast.forecastday[2].date}
+                    </li>
+                    <li key={uuidv4()}>
+                      Condition:{" "}
+                      {data.forecast.forecastday[2].day.condition.text}.
+                    </li>
+                    <li key={uuidv4()}>
+                      <figure>
+                        <img
+                          src={data.forecast.forecastday[2].day.condition.icon}
+                          alt="weather icon"
+                        ></img>
+                      </figure>
+                    </li>
+                  </ul>
+                </>
+              )}
+            </div>
 
-            <div className="card" key={index}>
+            <button
+              type="button"
+              onClick={() => setShowWholeForecast(!showWholeForecast)}
+            >
+              {showWholeForecast
+                ? "Hide forecast"
+                : "See forecast for three days"}
+            </button>
+
+            <div className="card">
               <p>Air humidity: {data.current.humidity} %.</p>
               <p>
                 Wind:{" "}
@@ -135,21 +204,19 @@ export function DisplayWeather(props: any) {
               <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
             </div>
 
-            <div className="card" key={index} id="hourly">
-              {data.forecast.forecastday[0].hour.map(
-                (hour: any, index: number) => (
-                  <div key={hour.time}>
-                    <p>Time: {hour.time}</p>
-                    <p>
-                      Temperature:{" "}
-                      {props.tempUnit === "temp_c"
-                        ? hour.temp_c + " degrees C."
-                        : hour.temp_f + " degrees F."}{" "}
-                    </p>
-                    <p>Condition: {hour.condition.text}</p>
-                  </div>
-                )
-              )}
+            <div className="card" id="hourly">
+              {data.forecast.forecastday[0].hour.map((hour: any) => (
+                <div key={hour.time}>
+                  <h3>Time: {hour.time}</h3>
+                  <p>
+                    Temperature:{" "}
+                    {props.tempUnit === "temp_c"
+                      ? hour.temp_c + " degrees C."
+                      : hour.temp_f + " degrees F."}{" "}
+                  </p>
+                  <p>Condition: {hour.condition.text}</p>
+                </div>
+              ))}
             </div>
           </>
         );

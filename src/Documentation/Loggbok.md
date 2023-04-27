@@ -100,3 +100,20 @@ Jag kan nu skriva ut alla tre forecastdays. Steg för att fixa så man kan klick
 ELLER
 
 -Villkora med boolean och state för att kunna klicka fram allt i app istället? Kolla vilket som verkar snyggast.
+
+### 27/4
+
+Jag har nu fixat så forecast för tre dagar göms eller visas med boolean och kommer att behålla den koden i displayweather istället för att ha en egen komponent till den. Det var enkelt att göra och känns rätt trevligt.
+
+Jag har också fixat så input clearas i sökfältet när användare klickar på "clear search", med hjälp av useRef-hooken.
+
+Nu har jag upptäckt ett problem, nämligen att ibland renderas viss väderdata innan den information jag vill ska komma först. Jag tror att det kanske är något som hänger kvar, att state uppdateras konstigt på grund av att jag har flyttat runt i koden. Jag behöver se över det.
+
+Att göra härnäst:
+
+- Lösa problemet med rendering
+- Testa igen att skicka props så state uppdateras om jag har getlocation direkt i app istället. Det irriterar mig att man måste gå via en route för att göra det, så då kommer det nog irritera andra användare också. Om jag inte lyckas lösa det, måste jag inkorporera det i designen på nåt snyggt sätt, kanske styla routen som en knapp och låtsas att det är meningen att det ska vara så.
+
+Efter detta:
+
+- Design, design, design.
