@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useSearchQueryStore from "../../stores/useSearchQueryStore";
 
 export const SearchBar = () => {
@@ -7,6 +7,8 @@ export const SearchBar = () => {
     state.setSearchQuery,
   ]);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const getSearchQuery = (event: any) => {
     event.preventDefault();
     setSearchQuery(event.target.searchQuery.value);
@@ -14,6 +16,9 @@ export const SearchBar = () => {
 
   const resetSearchQuery = () => {
     setSearchQuery("");
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   };
 
   return (
@@ -24,6 +29,7 @@ export const SearchBar = () => {
             type="text"
             name="searchQuery"
             placeholder="Type in a location..."
+            ref={inputRef}
           ></input>
           <button type="submit">Search weather</button>
           <button type="button" onClick={resetSearchQuery}>
