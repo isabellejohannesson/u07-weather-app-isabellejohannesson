@@ -67,13 +67,13 @@ export function DisplayWeather(props: any) {
 
   return (
     <>
-      {weatherData.map((data: any, index: number) => {
+      {weatherData.map((data: any) => {
         return (
           <>
             <div className="card" id="alert">
               {data.alerts.alert.length > 0 ? (
                 <ul>
-                  {data.alerts.alert.map((alert: any, index: number) => (
+                  {data.alerts.alert.map((alert: any) => (
                     <li key={uuidv4()}>
                       {alert.headline} ({alert.category}): {alert.desc}{" "}
                       {alert.effective} {alert.expires}

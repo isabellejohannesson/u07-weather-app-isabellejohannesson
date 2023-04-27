@@ -26,6 +26,10 @@ export const GetLocation = () => {
     );
   };
 
+  /*   useEffect(() => {
+    getLocation();
+  }, []);
+ */
   return (
     <div>
       <button onClick={() => getLocation()}>Get location</button>

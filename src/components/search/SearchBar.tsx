@@ -28,7 +28,7 @@ export const SearchBar = () => {
           <input
             type="text"
             name="searchQuery"
-            placeholder="Type in a location..."
+            placeholder="Enter city name..."
             ref={inputRef}
           ></input>
           <button type="submit">Search weather</button>
