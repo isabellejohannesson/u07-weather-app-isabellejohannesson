@@ -1,7 +1,10 @@
 import useWeatherApi from "../../hooks/useWeatherApi";
 import { useState } from "react";
+import { WholeForecast } from "../wholeforecast/WholeForecast";
 
 export function DisplayWeather(props: any) {
+  const [showWholeForecast, setShowWholeForecast] = useState(false);
+
   interface weatherData {
     alerts: {
       alert: [];
@@ -79,30 +82,46 @@ export function DisplayWeather(props: any) {
                 ""
               )}
             </div>
-            <div className="card" key={index}>
+            <div className="card" key={index} id="summaryWeather">
               <h2>{data.location.name}</h2>
-              <p>{data.location.country}</p>
+              <h3>{data.location.country}</h3>
               <p>{data.location.localtime}</p>
-              <p>
-                <p>
-                  Current temperature:{" "}
-                  {props.tempUnit === "temp_c"
-                    ? data.current.temp_c + " degrees C."
-                    : data.current.temp_f + " degrees F."}
-                </p>
-              </p>
 
-              <p>Today: {data.forecast.forecastday[0].date}</p>
               <p>
-                Condition: {data.forecast.forecastday[0].day.condition.text}.
+                Current temperature:{" "}
+                {props.tempUnit === "temp_c"
+                  ? data.current.temp_c + " degrees C."
+                  : data.current.temp_f + " degrees F."}
               </p>
-              <figure>
-                <img
-                  src={data.forecast.forecastday[0].day.condition.icon}
-                  alt="weather icon"
-                ></img>
-              </figure>
+              <p>
+                Feels like:{" "}
+                {props.tempUnit === "temp_c"
+                  ? data.current.feelslike_c + " degrees C."
+                  : data.current.feelslike_f + " degrees F."}
+              </p>
             </div>
+
+            <div className="card" key={index} id="forecast">
+              <ul>
+                <li key={index}>Today: {data.forecast.forecastday[0].date}</li>
+                <li key={index}>
+                  Condition: {data.forecast.forecastday[0].day.condition.text}.
+                </li>
+                <li key={index}>
+                  <figure>
+                    <img
+                      src={data.forecast.forecastday[0].day.condition.icon}
+                      alt="weather icon"
+                    ></img>
+                  </figure>
+                </li>
+              </ul>
+            </div>
+
+            <button type="button" onClick={() => setShowWholeForecast(true)}>
+              See forecast for next three days
+            </button>
+            {showWholeForecast && <WholeForecast />}
 
             <div className="card" key={index}>
               <p>Air humidity: {data.current.humidity} %.</p>
@@ -116,7 +135,7 @@ export function DisplayWeather(props: any) {
               <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
             </div>
 
-            <div className="card" key={index}>
+            <div className="card" key={index} id="hourly">
               {data.forecast.forecastday[0].hour.map(
                 (hour: any, index: number) => (
                   <div key={hour.time}>

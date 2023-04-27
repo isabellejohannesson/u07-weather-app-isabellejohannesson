@@ -89,4 +89,14 @@ Att göra härnäst: Bestämma vilken data som ska visas var och när, samt skap
 
 Att göra sen: fortfarande design, som fått stå tillbaka för att få all funktionalitet på plats.
 
-_Uppdatering_ PRIO: när man skickar in sina koordinater efter att man sökt manuellt, uppdateras inte informationen. Alltså behöver jag nån slags refresh?
+_Uppdatering_ ~~PRIO: när man skickar in sina koordinater efter att man sökt manuellt, uppdateras inte informationen. Alltså behöver jag nån slags refresh? ~~ Nu har jag lagt till ett clear search-filter. När detta är använt går det att få vädret för sin plats via geolocation.
+
+Jag kan nu skriva ut alla tre forecastdays. Steg för att fixa så man kan klicka sig in till en route för hela väderprognosen:
+
+- Flytta innehållet som ska vara i wholeforecast till egen komponent.
+- Skapa routing.
+- Skapa en länk.
+
+ELLER
+
+-Villkora med boolean och state för att kunna klicka fram allt i app istället? Kolla vilket som verkar snyggast.
