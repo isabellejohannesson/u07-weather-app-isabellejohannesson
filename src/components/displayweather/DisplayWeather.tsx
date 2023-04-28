@@ -204,23 +204,28 @@ export function DisplayWeather(props: any) {
               <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
             </div>
 
-            <div className="flex flex-wrap max-w-full" id="hourly">
+            <div
+              className="flex flex-wrap max-w-full bg-stone-300 rounded-md"
+              id="hourly"
+            >
               {data.forecast.forecastday[0].hour.map((hour: any) => (
-                <div className="flex-none w-2/3 md:w-1/5 md:pb-4 border rounded-lg justify-center mx-auto">
+                <div className="flex-none w-2/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs">
                   <ul className="hourly-column">
+                    <li className="font-bold" key={uuidv4()}>
+                      {hour.condition.text}
+                    </li>
                     <li key={uuidv4()}>
                       <figure>
                         <img src={hour.condition.icon} alt="weather icon"></img>
                       </figure>
                     </li>
-                    <li key={uuidv4()}>Time: {hour.time}</li>
+                    <li key={uuidv4()}>{hour.time}</li>
                     <li key={uuidv4()}>
-                      Temperature:{" "}
+                      {" "}
                       {props.tempUnit === "temp_c"
                         ? hour.temp_c + " degrees C."
                         : hour.temp_f + " degrees F."}{" "}
                     </li>
-                    <li key={uuidv4()}>Condition: {hour.condition.text}</li>
                   </ul>
                 </div>
               ))}
