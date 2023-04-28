@@ -11,18 +11,20 @@ function App() {
   const [distanceTimeUnit, setDistanceTimeUnit] = useState("mph");
 
   return (
-    <div className="App">
-      <Header
-        setTempUnit={setTempUnit}
-        setDistanceTimeUnit={setDistanceTimeUnit}
-      ></Header>
-      <SearchBar></SearchBar>
-      <DisplayWeather
-        tempUnit={tempUnit}
-        setTempUnit={setTempUnit}
-        distanceTimeUnit={distanceTimeUnit}
-        setDistanceTimeUnit={setDistanceTimeUnit}
-      ></DisplayWeather>
+    <div>
+      <section className="App">
+        <Header
+          setTempUnit={setTempUnit}
+          setDistanceTimeUnit={setDistanceTimeUnit}
+        ></Header>
+        <SearchBar></SearchBar>
+        <DisplayWeather
+          tempUnit={tempUnit}
+          setTempUnit={setTempUnit}
+          distanceTimeUnit={distanceTimeUnit}
+          setDistanceTimeUnit={setDistanceTimeUnit}
+        ></DisplayWeather>
+      </section>
     </div>
   );
 }

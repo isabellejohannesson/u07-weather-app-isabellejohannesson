@@ -1,3 +1,4 @@
+import "./Header.css";
 import logo from "../../assets/logo.svg";
 
 export function Header(props: any) {
@@ -12,11 +13,14 @@ export function Header(props: any) {
   };
 
   return (
-    <header>
-      <h1>WeatherWise</h1>
-      <img src={logo} alt="weather-logo" className="logo"></img>
-      <button onClick={toggleTempUnit}>Toggle temperature unit</button>
-      <button onClick={toggleDistanceTimeUnit}>Toggle wind unit</button>
+    <header className="p-2">
+      <section className="py-2 px-2">
+        <div className="p-2">
+          <button onClick={toggleTempUnit}>C/F degrees</button>
+          <button onClick={toggleDistanceTimeUnit}>Wind unit</button>
+        </div>
+        <h1>What's up weatherwise?</h1>
+      </section>
     </header>
   );
 }

@@ -81,7 +81,7 @@ export function DisplayWeather(props: any) {
                   ))}
                 </ul>
               ) : (
-                ""
+                "No active weather alerts"
               )}
             </div>
             <div className="card" id="summaryWeather">
@@ -204,17 +204,24 @@ export function DisplayWeather(props: any) {
               <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
             </div>
 
-            <div className="card" id="hourly">
+            <div className="flex flex-wrap max-w-full" id="hourly">
               {data.forecast.forecastday[0].hour.map((hour: any) => (
-                <div key={hour.time}>
-                  <h3>Time: {hour.time}</h3>
-                  <p>
-                    Temperature:{" "}
-                    {props.tempUnit === "temp_c"
-                      ? hour.temp_c + " degrees C."
-                      : hour.temp_f + " degrees F."}{" "}
-                  </p>
-                  <p>Condition: {hour.condition.text}</p>
+                <div className="flex-none w-2/3 md:w-1/5 md:pb-4 border rounded-lg justify-center mx-auto">
+                  <ul className="hourly-column">
+                    <li key={uuidv4()}>
+                      <figure>
+                        <img src={hour.condition.icon} alt="weather icon"></img>
+                      </figure>
+                    </li>
+                    <li key={uuidv4()}>Time: {hour.time}</li>
+                    <li key={uuidv4()}>
+                      Temperature:{" "}
+                      {props.tempUnit === "temp_c"
+                        ? hour.temp_c + " degrees C."
+                        : hour.temp_f + " degrees F."}{" "}
+                    </li>
+                    <li key={uuidv4()}>Condition: {hour.condition.text}</li>
+                  </ul>
                 </div>
               ))}
             </div>

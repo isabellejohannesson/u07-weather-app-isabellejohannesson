@@ -16,44 +16,20 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <Link to="settings">Set profile info</Link>
-        <hr />
-        <Link to="forecast">See forecast for coming three days</Link>
+        <Link to="settings">Set your coordinates</Link>
+
         <App></App>
       </>
     ),
   },
-  {
-    path: "displayweather",
-    element: (
-      <>
-        <Link to="forecast">See forecast for coming three days</Link>
-        <DisplayWeather></DisplayWeather>
-      </>
-    ),
-  },
+
   {
     path: "settings",
     element: (
       <>
-        <Link to="/">Search weather</Link>
+        <Link to="/">See weather in your location</Link>
         <hr />
         <GetLocation></GetLocation>
-      </>
-    ),
-  },
-  {
-    path: "forecast",
-    element: (
-      <>
-        <Link
-          style={{ color: "black", fontSize: "5em", textDecoration: "none" }}
-          to="/"
-        >
-          Home
-        </Link>
-        <hr />
-        <WholeForecast></WholeForecast>
       </>
     ),
   },

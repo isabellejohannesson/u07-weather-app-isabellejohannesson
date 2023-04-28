@@ -1,3 +1,4 @@
+import "./SearchBar.css";
 import { useState, useEffect, useRef } from "react";
 import useSearchQueryStore from "../../stores/useSearchQueryStore";
 
@@ -23,18 +24,21 @@ export const SearchBar = () => {
 
   return (
     <>
-      <section className="searchbar-container">
-        <form className="searchbar" onSubmit={getSearchQuery}>
+      <section className="p-4">
+        <form onSubmit={getSearchQuery} className="p-6">
           <input
             type="text"
             name="searchQuery"
             placeholder="Enter city name..."
             ref={inputRef}
+            className="p-2 border-solid border-2 rounded-full w-full bg-stone-300"
           ></input>
-          <button type="submit">Search weather</button>
-          <button type="button" onClick={resetSearchQuery}>
-            Clear search
-          </button>
+          <div className="p-4">
+            <button type="submit">Search weather</button>
+            <button type="button" onClick={resetSearchQuery}>
+              Clear search
+            </button>
+          </div>
         </form>
       </section>
     </>
