@@ -37,7 +37,8 @@
 
 .hourly-column {
   width: calc(33.33% - 20px); 
-  margin: 10px; 
+  margin: 2em;
+  width: fit-content;
 }
 
 
