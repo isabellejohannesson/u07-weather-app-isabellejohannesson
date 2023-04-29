@@ -101,7 +101,7 @@ export function DisplayWeather(props: any) {
               <p>{data.location.localtime}</p>
 
               <p>
-                Current temperature:{" "}
+                Temperature:{" "}
                 {props.tempUnit === "temp_c"
                   ? data.current.temp_c + " degrees C."
                   : data.current.temp_f + " degrees F."}
