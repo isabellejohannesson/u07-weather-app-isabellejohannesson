@@ -33,7 +33,7 @@ export const SearchBar = () => {
             ref={inputRef}
             className="p-2 border-solid border-2 rounded-full w-full bg-stone-300"
           ></input>
-          <div className="p-4">
+          <div className="p-4 flex flex-row-reverse justify-between">
             <button type="submit">Search weather</button>
             <button type="button" onClick={resetSearchQuery}>
               Clear search

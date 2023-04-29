@@ -146,56 +146,67 @@ export function DisplayWeather(props: any) {
             >
               {showWholeForecast && (
                 <>
-                  <h2>{data.location.name}</h2>
+                  <div className="flex flex-row justify-center">
+                    <figure>
+                      <img
+                        src={data.forecast.forecastday[0].day.condition.icon}
+                        alt="weather icon"
+                      ></img>
+                    </figure>
+                  </div>
                   <ul>
-                    <li key={uuidv4()}>
-                      Today: {data.forecast.forecastday[0].date}
-                    </li>
+                    <li key={uuidv4()}>{data.forecast.forecastday[0].date}</li>
                     <li key={uuidv4()}>
                       Condition:{" "}
                       {data.forecast.forecastday[0].day.condition.text}.
                     </li>
                     <li key={uuidv4()}>
-                      <figure>
-                        <img
-                          src={data.forecast.forecastday[0].day.condition.icon}
-                          alt="weather icon"
-                        ></img>
-                      </figure>
+                      Sunrise: {data.forecast.forecastday[0].astro.sunrise}
+                    </li>
+                    <li key={uuidv4()}>
+                      Sunset: {data.forecast.forecastday[0].astro.sunset}
                     </li>
                   </ul>
+                  <div className="flex flex-row justify-center">
+                    <figure>
+                      <img
+                        src={data.forecast.forecastday[1].day.condition.icon}
+                        alt="weather icon"
+                      ></img>
+                    </figure>
+                  </div>
                   <ul>
-                    <li key={uuidv4()}>
-                      Today: {data.forecast.forecastday[1].date}
-                    </li>
+                    <li key={uuidv4()}>{data.forecast.forecastday[1].date}</li>
                     <li key={uuidv4()}>
                       Condition:{" "}
                       {data.forecast.forecastday[1].day.condition.text}.
                     </li>
                     <li key={uuidv4()}>
-                      <figure>
-                        <img
-                          src={data.forecast.forecastday[1].day.condition.icon}
-                          alt="weather icon"
-                        ></img>
-                      </figure>
+                      Sunrise: {data.forecast.forecastday[1].astro.sunrise}
+                    </li>
+                    <li key={uuidv4()}>
+                      Sunset: {data.forecast.forecastday[1].astro.sunset}
                     </li>
                   </ul>
+                  <div className="flex flex-row justify-center">
+                    <figure>
+                      <img
+                        src={data.forecast.forecastday[2].day.condition.icon}
+                        alt="weather icon"
+                      ></img>
+                    </figure>
+                  </div>
                   <ul>
-                    <li key={uuidv4()}>
-                      Today: {data.forecast.forecastday[2].date}
-                    </li>
+                    <li key={uuidv4()}>{data.forecast.forecastday[2].date}</li>
                     <li key={uuidv4()}>
                       Condition:{" "}
                       {data.forecast.forecastday[2].day.condition.text}.
                     </li>
                     <li key={uuidv4()}>
-                      <figure>
-                        <img
-                          src={data.forecast.forecastday[2].day.condition.icon}
-                          alt="weather icon"
-                        ></img>
-                      </figure>
+                      Sunrise: {data.forecast.forecastday[2].astro.sunrise}
+                    </li>
+                    <li key={uuidv4()}>
+                      Sunset: {data.forecast.forecastday[2].astro.sunset}
                     </li>
                   </ul>
                 </>
@@ -215,7 +226,7 @@ export function DisplayWeather(props: any) {
               {data.forecast.forecastday[0].hour.map((hour: any) => (
                 <div className="flex-none w-1/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs">
                   <ul className="hourly-column">
-                    <li className="font-bold" key={uuidv4()}>
+                    <li className="font-bold text-md" key={uuidv4()}>
                       {hour.condition.text}
                     </li>
                     <li key={uuidv4()}>
