@@ -13,13 +13,13 @@ export function Header(props: any) {
   };
 
   return (
-    <header className="p-2">
+    <header className="p-2 flex flex-row">
       <section className="py-2 px-2">
         <div className="p-2">
+          <img src={logo} alt="weather-logo" className="logo"></img>
           <button onClick={toggleTempUnit}>C/F degrees</button>
           <button onClick={toggleDistanceTimeUnit}>Wind unit</button>
         </div>
-        <img src={logo} alt="weather-logo"></img>
       </section>
     </header>
   );

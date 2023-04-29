@@ -211,12 +211,9 @@ export function DisplayWeather(props: any) {
                 : "See forecast for three days"}
             </button>
 
-            <div
-              className="flex flex-wrap max-w-full bg-stone-300 rounded-md"
-              id="hourly"
-            >
+            <div className="flex flex-wrap max-w-full" id="hourly">
               {data.forecast.forecastday[0].hour.map((hour: any) => (
-                <div className="flex-none w-2/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs">
+                <div className="flex-none w-1/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs">
                   <ul className="hourly-column">
                     <li className="font-bold" key={uuidv4()}>
                       {hour.condition.text}
