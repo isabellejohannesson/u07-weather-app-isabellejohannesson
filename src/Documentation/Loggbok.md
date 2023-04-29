@@ -117,3 +117,9 @@ Att göra härnäst:
 Efter detta:
 
 - Design, design, design.
+
+### 29/4
+
+Jag hittar ingen enkel lösning för att få get location direkt i startvyn, och det är något trevligt med att gå in i en länk och ställa in koordinater som grundinställning, så jag behåller länken.
+
+Den har tyvärr varit väldigt svår att arbeta in i designen, och jag har överlag haft mycket problem under designprocessen. Vissa saker går inte att styla med Tailwind, då jag har villkor med alternativa klasser i mina html-element, vilket gjort att jag designat vissa saker med css och vissa saker med Tailwind. Detta har i sin tur gjort koden för designen svåröverskådlig och svår att ändra i. Detta tar jag med mig till nästa projekt. Jag tar också med mig att jag hade en alldeles för komplicerad skiss som jag sedan fick problem med att utföra. På grund av det har jag haft svårt att hitta en bra metod för designen. Appen ser nu okej ut, men liknar inte skissen jag skapat. Jag ska till nästa gång planera för alternativ och vara ännu mer metodisk.
