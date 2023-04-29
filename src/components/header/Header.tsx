@@ -19,7 +19,7 @@ export function Header(props: any) {
           <button onClick={toggleTempUnit}>C/F degrees</button>
           <button onClick={toggleDistanceTimeUnit}>Wind unit</button>
         </div>
-        <h1>What's up weatherwise?</h1>
+        <img src={logo} alt="weather-logo"></img>
       </section>
     </header>
   );

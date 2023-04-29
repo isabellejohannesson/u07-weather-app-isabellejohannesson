@@ -24,8 +24,8 @@ export const SearchBar = () => {
 
   return (
     <>
-      <section className="p-4">
-        <form onSubmit={getSearchQuery} className="p-6">
+      <section className="p-4 flex flex-col justify-center">
+        <form onSubmit={getSearchQuery} className="p-6 max-w-sm self-center">
           <input
             type="text"
             name="searchQuery"

@@ -17,6 +17,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Link to="settings">Set your coordinates</Link>
+        <hr></hr>
 
         <App></App>
       </>

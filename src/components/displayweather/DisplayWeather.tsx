@@ -73,6 +73,7 @@ export function DisplayWeather(props: any) {
             <div className="card" id="alert">
               {data.alerts.alert.length > 0 ? (
                 <ul>
+                  <h3 className="text-red-600 text-xl">Weather alert:</h3>
                   {data.alerts.alert.map((alert: any) => (
                     <li key={uuidv4()}>
                       {alert.headline} ({alert.category}): {alert.desc}{" "}
@@ -85,7 +86,17 @@ export function DisplayWeather(props: any) {
               )}
             </div>
             <div className="card" id="summaryWeather">
-              <h2>{data.location.name}</h2>
+              <div className="flex flex-row justify-center">
+                <h2>{data.location.name}</h2>
+                <figure>
+                  <img
+                    src={data.forecast.forecastday[0].day.condition.icon}
+                    alt="weather icon"
+                    className="px-4"
+                  ></img>
+                </figure>
+              </div>
+
               <h3>{data.location.country}</h3>
               <p>{data.location.localtime}</p>
 
@@ -101,9 +112,6 @@ export function DisplayWeather(props: any) {
                   ? data.current.feelslike_c + " degrees C."
                   : data.current.feelslike_f + " degrees F."}
               </p>
-            </div>
-
-            <div className="card" id="forecast">
               <ul>
                 <li key={uuidv4()}>
                   Today: {data.forecast.forecastday[0].date}
@@ -111,17 +119,28 @@ export function DisplayWeather(props: any) {
                 <li key={uuidv4()}>
                   Condition: {data.forecast.forecastday[0].day.condition.text}.
                 </li>
-                <li key={uuidv4()}>
-                  <figure>
-                    <img
-                      src={data.forecast.forecastday[0].day.condition.icon}
-                      alt="weather icon"
-                    ></img>
-                  </figure>
-                </li>
+                <li key={uuidv4()}></li>
               </ul>
+              <div className="p-6">
+                <ul>
+                  <li key={uuidv4()}>
+                    Air humidity: {data.current.humidity} %.
+                  </li>
+                  <li key={uuidv4()}>
+                    Wind:{" "}
+                    {props.distanceTimeUnit === "wind_mph"
+                      ? data.current.wind_mph + " miles per hour."
+                      : data.current.wind_kph + " kilometers per hour."}
+                  </li>
+                  <li key={uuidv4()}>
+                    Sunrise: {data.forecast.forecastday[0].astro.sunrise}
+                  </li>
+                  <li key={uuidv4()}>
+                    Sunset: {data.forecast.forecastday[0].astro.sunset}
+                  </li>
+                </ul>
+              </div>
             </div>
-
             <div
               className={showWholeForecast ? "card threedayforecast" : "card"}
             >
@@ -191,18 +210,6 @@ export function DisplayWeather(props: any) {
                 ? "Hide forecast"
                 : "See forecast for three days"}
             </button>
-
-            <div className="card">
-              <p>Air humidity: {data.current.humidity} %.</p>
-              <p>
-                Wind:{" "}
-                {props.distanceTimeUnit === "wind_mph"
-                  ? data.current.wind_mph + " miles per hour."
-                  : data.current.wind_kph + " kilometers per hour."}
-              </p>
-              <p>Sunrise: {data.forecast.forecastday[0].astro.sunrise}</p>
-              <p>Sunset: {data.forecast.forecastday[0].astro.sunset}</p>
-            </div>
 
             <div
               className="flex flex-wrap max-w-full bg-stone-300 rounded-md"
