@@ -212,19 +212,20 @@ export function DisplayWeather(props: any) {
                 </>
               )}
             </div>
+            <div className="py-4">
+              <button
+                type="button"
+                onClick={() => setShowWholeForecast(!showWholeForecast)}
+              >
+                {showWholeForecast
+                  ? "Hide forecast"
+                  : "See forecast for three days"}
+              </button>
+            </div>
 
-            <button
-              type="button"
-              onClick={() => setShowWholeForecast(!showWholeForecast)}
-            >
-              {showWholeForecast
-                ? "Hide forecast"
-                : "See forecast for three days"}
-            </button>
-
-            <div className="flex flex-wrap max-w-full pt-4" id="hourly">
+            <div className="flex flex-wrap max-w-full py-4" id="hourly">
               {data.forecast.forecastday[0].hour.map((hour: any) => (
-                <div className="flex-none w-1/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs">
+                <div className="flex-none w-1/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs py-4">
                   <ul className="hourly-column">
                     <li className="font-bold text-md" key={uuidv4()}>
                       {hour.condition.text}

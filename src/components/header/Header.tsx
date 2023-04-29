@@ -18,7 +18,7 @@ export function Header(props: any) {
         <section className="py-2 px-4 absolute top-0 left-0">
           <img src={logo} alt="weather-logo" className="logo"></img>
         </section>
-        <div className="p-2 justify-center flex flex-row">
+        <div className="py-4 justify-center flex flex-row">
           <button onClick={toggleTempUnit}>C/F degrees</button>
           <button onClick={toggleDistanceTimeUnit}>Wind unit</button>
         </div>

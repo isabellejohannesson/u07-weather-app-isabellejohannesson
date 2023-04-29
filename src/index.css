@@ -46,10 +46,10 @@
   
   button {
     border-radius: 20px;
-    border: 1px solid transparent;
+    border: 1px solid #d6d3d1;
     padding: 0.6em 1em;
     font-size: 1em;
-    font-weight: 800;
+    font-weight: 400;
     font-family: inherit;
     cursor: pointer;
     transition: border-color 0.25s;
