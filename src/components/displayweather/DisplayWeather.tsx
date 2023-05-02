@@ -87,7 +87,7 @@ export function DisplayWeather(props: any) {
             </div>
             <div className="flex flex-col justify-center text-stone-300 pt-4">
               <div className="flex flex-col justify-center">
-                <p>{data.location.name}</p>
+                <p className="font-bold">{data.location.name}</p>
                 <h2>
                   {" "}
                   {props.tempUnit === "temp_c"
@@ -105,7 +105,7 @@ export function DisplayWeather(props: any) {
                 </div>
               </div>
 
-              <h3>{data.location.country}</h3>
+              <h3 className="font-bold">{data.location.country}</h3>
               <p>{data.location.localtime}</p>
 
               <p>
@@ -116,10 +116,7 @@ export function DisplayWeather(props: any) {
               </p>
               <ul>
                 <li key={uuidv4()}>
-                  Today: {data.forecast.forecastday[0].date}
-                </li>
-                <li key={uuidv4()}>
-                  Condition: {data.forecast.forecastday[0].day.condition.text}.
+                  {data.forecast.forecastday[0].day.condition.text}.
                 </li>
                 <li key={uuidv4()}></li>
               </ul>
@@ -159,7 +156,7 @@ export function DisplayWeather(props: any) {
                   <ul>
                     <li key={uuidv4()}>{data.forecast.forecastday[0].date}</li>
                     <li key={uuidv4()}>
-                      Condition:{" "}
+                      {" "}
                       {data.forecast.forecastday[0].day.condition.text}.
                     </li>
                     <li key={uuidv4()}>
@@ -180,7 +177,7 @@ export function DisplayWeather(props: any) {
                   <ul>
                     <li key={uuidv4()}>{data.forecast.forecastday[1].date}</li>
                     <li key={uuidv4()}>
-                      Condition:{" "}
+                      {" "}
                       {data.forecast.forecastday[1].day.condition.text}.
                     </li>
                     <li key={uuidv4()}>
@@ -201,7 +198,7 @@ export function DisplayWeather(props: any) {
                   <ul>
                     <li key={uuidv4()}>{data.forecast.forecastday[2].date}</li>
                     <li key={uuidv4()}>
-                      Condition:{" "}
+                      {" "}
                       {data.forecast.forecastday[2].day.condition.text}.
                     </li>
                     <li key={uuidv4()}>
