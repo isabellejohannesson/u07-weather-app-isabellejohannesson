@@ -20,25 +20,6 @@
   flex-direction: column;
 }
 
-/* .card-container {
-  height: 300px; 
-  overflow: scroll;
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
-}
-
-.card-container::-webkit-scrollbar {
-  width: 0px; 
-}
-
-.card-container > div {
-  width: calc(80% / 4);
-  padding-right: 1rem;
-} */
-
 .hourly-column {
   width: calc(33.33% - 20px); 
   margin: 2em;

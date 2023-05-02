@@ -25,7 +25,7 @@ export const SearchBar = () => {
   return (
     <>
       <section className="p-4 flex flex-col justify-center">
-        <form onSubmit={getSearchQuery} className="p-6 max-w-sm self-center">
+        <form onSubmit={getSearchQuery} className="p-6 self-center">
           <input
             type="text"
             name="searchQuery"
@@ -34,9 +34,18 @@ export const SearchBar = () => {
             className="p-2 border-solid border-2 rounded-full w-full bg-stone-300"
           ></input>
           <div className="p-4 flex flex-row-reverse justify-between">
-            <button type="submit">Search weather</button>
-            <button type="button" onClick={resetSearchQuery}>
-              Clear search
+            <button
+              className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              type="submit"
+            >
+              Search
+            </button>
+            <button
+              className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              type="button"
+              onClick={resetSearchQuery}
+            >
+              Clear
             </button>
           </div>
         </form>

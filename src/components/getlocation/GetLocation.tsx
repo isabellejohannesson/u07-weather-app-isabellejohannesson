@@ -31,10 +31,10 @@ export const GetLocation = () => {
   }, []);
  */
   return (
-    <div>
-      <button onClick={() => getLocation()}>Get location</button>
-      {status && <p>Status: {status}</p>}
-      {position && <p>Your latitude: {position.lat}</p>}
+    <div className="py-6 text-stone-300">
+      <button onClick={() => getLocation()}>Set coordinates</button>
+      {status && <p className="p-4">Status: {status}</p>}
+      {position && <p className="p-4">Your latitude: {position.lat}</p>}
       {position && <p>Your longitude: {position.lng}</p>}
     </div>
   );

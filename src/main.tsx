@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     path: "settings",
     element: (
       <>
-        <Link to="/">See weather in your location</Link>
+        <Link to="/">Back to weather</Link>
         <hr />
         <GetLocation></GetLocation>
       </>

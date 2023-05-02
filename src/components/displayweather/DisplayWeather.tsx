@@ -85,32 +85,34 @@ export function DisplayWeather(props: any) {
                 "No active weather alerts"
               )}
             </div>
-            <div className="card" id="summaryWeather">
-              <div className="flex flex-row justify-center">
-                <h2>{data.location.name}</h2>
-                <figure>
-                  <img
-                    src={data.forecast.forecastday[0].day.condition.icon}
-                    alt="weather icon"
-                    className="px-4"
-                  ></img>
-                </figure>
+            <div className="flex flex-col justify-center text-stone-300 pt-4">
+              <div className="flex flex-col justify-center">
+                <p>{data.location.name}</p>
+                <h2>
+                  {" "}
+                  {props.tempUnit === "temp_c"
+                    ? data.current.temp_c + " C °."
+                    : data.current.temp_f + " F °."}
+                </h2>
+                <div className="self-center">
+                  <figure>
+                    <img
+                      src={data.forecast.forecastday[0].day.condition.icon}
+                      alt="weather icon"
+                      className="px-4"
+                    ></img>
+                  </figure>
+                </div>
               </div>
 
               <h3>{data.location.country}</h3>
               <p>{data.location.localtime}</p>
 
               <p>
-                Temperature:{" "}
-                {props.tempUnit === "temp_c"
-                  ? data.current.temp_c + " degrees C."
-                  : data.current.temp_f + " degrees F."}
-              </p>
-              <p>
                 Feels like:{" "}
                 {props.tempUnit === "temp_c"
-                  ? data.current.feelslike_c + " degrees C."
-                  : data.current.feelslike_f + " degrees F."}
+                  ? data.current.feelslike_c + " C °."
+                  : data.current.feelslike_f + " F °."}
               </p>
               <ul>
                 <li key={uuidv4()}>
@@ -215,6 +217,7 @@ export function DisplayWeather(props: any) {
             <div className="py-4">
               <button
                 type="button"
+                className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 onClick={() => setShowWholeForecast(!showWholeForecast)}
               >
                 {showWholeForecast
@@ -239,8 +242,8 @@ export function DisplayWeather(props: any) {
                     <li key={uuidv4()}>
                       {" "}
                       {props.tempUnit === "temp_c"
-                        ? hour.temp_c + " degrees C."
-                        : hour.temp_f + " degrees F."}{" "}
+                        ? hour.temp_c + " C °."
+                        : hour.temp_f + " F °."}{" "}
                     </li>
                   </ul>
                 </div>

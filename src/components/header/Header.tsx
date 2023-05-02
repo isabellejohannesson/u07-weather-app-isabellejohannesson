@@ -14,13 +14,23 @@ export function Header(props: any) {
 
   return (
     <>
-      <header className="p-2 flex flex-row justify-center">
+      <header className="p-2 flex flex-row justify-end">
         <section className="py-2 px-4 absolute top-0 left-0">
           <img src={logo} alt="weather-logo" className="logo"></img>
         </section>
-        <div className="py-4 justify-center flex flex-row">
-          <button onClick={toggleTempUnit}>C/F degrees</button>
-          <button onClick={toggleDistanceTimeUnit}>Wind unit</button>
+        <div className="p-2 justify-center flex flex-col text-sm">
+          <button
+            className="text-stone-300 font-semibold hover:text-teal-300"
+            onClick={toggleTempUnit}
+          >
+            C/F °
+          </button>
+          <button
+            className="text-stone-300 font-semibold hover:text-teal-300"
+            onClick={toggleDistanceTimeUnit}
+          >
+            Wind unit
+          </button>
         </div>
       </header>
     </>
