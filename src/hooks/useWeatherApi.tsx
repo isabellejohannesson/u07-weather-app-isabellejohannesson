@@ -24,7 +24,7 @@ function useWeatherApi() {
           position.lat +
           `,` +
           position.lng +
-          `&days=3&aqi=no&alerts=yes`;
+          `&days=3&aqi=no&alerts=no`;
 
       const response = await fetch(url);
 
