@@ -15,50 +15,32 @@ export const WholeForecast = () => {
   return (
     <>
       {weatherData.map((data: any, index: number) => {
+        const forecastDays = data?.forecast?.forecastday;
+
+        if (!forecastDays || forecastDays.length < 3) {
+          return <p key={index}>Forecast data is incomplete.</p>;
+        }
+
         return (
           <div className="card" key={index} id="threeDayForecast">
-            <ul>
-              <li key={index}>Today: {data.forecast.forecastday[0].date}</li>
-              <li key={index}>
-                Condition: {data.forecast.forecastday[0].day.condition.text}.
-              </li>
-              <li key={index}>
-                <figure>
-                  <img
-                    src={data.forecast.forecastday[0].day.condition.icon}
-                    alt="weather icon"
-                  ></img>
-                </figure>
-              </li>
-            </ul>
-            <ul>
-              <li key={index}>Today: {data.forecast.forecastday[1].date}</li>
-              <li key={index}>
-                Condition: {data.forecast.forecastday[1].day.condition.text}.
-              </li>
-              <li key={index}>
-                <figure>
-                  <img
-                    src={data.forecast.forecastday[1].day.condition.icon}
-                    alt="weather icon"
-                  ></img>
-                </figure>
-              </li>
-            </ul>
-            <ul>
-              <li key={index}>Today: {data.forecast.forecastday[2].date}</li>
-              <li key={index}>
-                Condition: {data.forecast.forecastday[2].day.condition.text}.
-              </li>
-              <li key={index}>
-                <figure>
-                  <img
-                    src={data.forecast.forecastday[2].day.condition.icon}
-                    alt="weather icon"
-                  ></img>
-                </figure>
-              </li>
-            </ul>
+            {forecastDays.slice(0, 3).map((day: any, i: number) => (
+              <ul key={i}>
+                <li>
+                  Day {i + 1}: {day?.date || "No date available"}
+                </li>
+                <li>Condition: {day?.day?.condition?.text || "Unknown"}</li>
+                <li>
+                  <figure>
+                    <img
+                      src={
+                        day?.day?.condition?.icon || "/default-weather-icon.png"
+                      }
+                      alt="weather icon"
+                    />
+                  </figure>
+                </li>
+              </ul>
+            ))}
           </div>
         );
       })}
