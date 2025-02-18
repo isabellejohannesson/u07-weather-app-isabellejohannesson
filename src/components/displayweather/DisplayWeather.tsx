@@ -69,13 +69,13 @@ export function DisplayWeather(props: any) {
         return (
           <>
             <div className="card" id="alert">
-              {data.alerts.alert.length > 0 ? (
+              {data?.alerts?.alert?.length > 0 ? (
                 <ul>
                   <h3 className="text-red-600 text-xl">Weather alert:</h3>
                   {data.alerts.alert.map((alert: any) => (
                     <li key={uuidv4()}>
-                      {alert.headline} ({alert.category}): {alert.desc}{" "}
-                      {alert.effective} {alert.expires}
+                      {alert?.headline} ({alert?.category}): {alert?.desc}{" "}
+                      {alert?.effective} {alert?.expires}
                     </li>
                   ))}
                 </ul>
