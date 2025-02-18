@@ -1,7 +1,5 @@
 import useWeatherApi from "../../hooks/useWeatherApi";
 import { useState } from "react";
-import { WholeForecast } from "../wholeforecast/WholeForecast";
-import useLocationStore from "../../stores/useLocationStore";
 import { v4 as uuidv4 } from "uuid";
 
 export function DisplayWeather(props: any) {

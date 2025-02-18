@@ -17,7 +17,7 @@ function useWeatherApi() {
     try {
       let url = `https://api.weatherapi.com/v1/forecast.json?key=` + appKey;
       if (currentSearchQuery) {
-        url += `&q=` + currentSearchQuery + `&days=3&aqi=no&alerts=yes`;
+        url += `&q=` + currentSearchQuery + `&days=3&aqi=no&alerts=no`;
       } else
         url +=
           `&q=` +
