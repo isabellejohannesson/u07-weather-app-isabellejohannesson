@@ -5,54 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 export function DisplayWeather(props: any) {
   const [showWholeForecast, setShowWholeForecast] = useState(false);
 
-  interface weatherData {
-    alerts: {
-      alert: [];
-    };
-
-    location: {
-      id: 1;
-      name: string;
-      country: string;
-      localtime: string;
-    };
-    current: {
-      id: 2;
-      temp_c: number;
-      temp_f: number;
-      humidity: number;
-      wind_mph: number;
-      wind_kph: number;
-    };
-    forecast: {
-      forecastday: [
-        {
-          id: 3;
-          date: number;
-          day: {
-            condition: {
-              text: string;
-              icon: string;
-            };
-          };
-          astro: any;
-          hour: [
-            {
-              time: number;
-              temp_c: number;
-              temp_f: number;
-
-              condition: {
-                text: string;
-                icon: string;
-              };
-            }
-          ];
-        }
-      ];
-    };
-  }
-
   const [weatherData = [], isLoading = false, error = null] = useWeatherApi();
 
   if (isLoading) {
@@ -65,9 +17,10 @@ export function DisplayWeather(props: any) {
 
   return (
     <>
-      {weatherData.map((data: any) => {
+      {weatherData?.map((data: any) => {
         return (
-          <>
+          <div key={uuidv4()}>
+            {/* Weather Alerts */}
             <div className="card" id="alert">
               {data?.alerts?.alert?.length > 0 ? (
                 <ul>
@@ -83,132 +36,115 @@ export function DisplayWeather(props: any) {
                 "No active weather alerts"
               )}
             </div>
+
+            {/* Current Weather */}
             <div className="flex flex-col justify-center text-stone-300 pt-4">
               <div className="flex flex-col justify-center">
-                <p className="font-bold">{data.location.name}</p>
+                <p className="font-bold">
+                  {data?.location?.name || "Unknown Location"}
+                </p>
                 <h2>
-                  {" "}
                   {props.tempUnit === "temp_c"
-                    ? data.current.temp_c + " C °."
-                    : data.current.temp_f + " F °."}
+                    ? `${data?.current?.temp_c ?? "N/A"} C°`
+                    : `${data?.current?.temp_f ?? "N/A"} F°`}
                 </h2>
                 <div className="self-center">
                   <figure>
                     <img
-                      src={data.forecast.forecastday[0].day.condition.icon}
+                      src={
+                        data?.forecast?.forecastday?.[0]?.day?.condition
+                          ?.icon || ""
+                      }
                       alt="weather icon"
                       className="px-4"
-                    ></img>
+                    />
                   </figure>
                 </div>
               </div>
 
-              <h3 className="font-bold">{data.location.country}</h3>
-              <p>{data.location.localtime}</p>
+              <h3 className="font-bold">
+                {data?.location?.country || "Unknown Country"}
+              </h3>
+              <p>{data?.location?.localtime || "Unknown Time"}</p>
 
               <p>
                 Feels like:{" "}
                 {props.tempUnit === "temp_c"
-                  ? data.current.feelslike_c + " C °."
-                  : data.current.feelslike_f + " F °."}
+                  ? `${data?.current?.feelslike_c ?? "N/A"} C°`
+                  : `${data?.current?.feelslike_f ?? "N/A"} F°`}
               </p>
-              <ul>
-                <li key={uuidv4()}>
-                  {data.forecast.forecastday[0].day.condition.text}.
-                </li>
-                <li key={uuidv4()}></li>
-              </ul>
+
+              {/* Additional Weather Data */}
               <div className="p-6">
                 <ul>
                   <li key={uuidv4()}>
-                    Air humidity: {data.current.humidity} %.
+                    Air humidity: {data?.current?.humidity ?? "N/A"}%
                   </li>
                   <li key={uuidv4()}>
                     Wind:{" "}
                     {props.distanceTimeUnit === "wind_mph"
-                      ? data.current.wind_mph + " miles per hour."
-                      : data.current.wind_kph + " kilometers per hour."}
+                      ? `${data?.current?.wind_mph ?? "N/A"} miles per hour`
+                      : `${
+                          data?.current?.wind_kph ?? "N/A"
+                        } kilometers per hour`}
                   </li>
                   <li key={uuidv4()}>
-                    Sunrise: {data.forecast.forecastday[0].astro.sunrise}
+                    Sunrise:{" "}
+                    {data?.forecast?.forecastday?.[0]?.astro?.sunrise || "N/A"}
                   </li>
                   <li key={uuidv4()}>
-                    Sunset: {data.forecast.forecastday[0].astro.sunset}
+                    Sunset:{" "}
+                    {data?.forecast?.forecastday?.[0]?.astro?.sunset || "N/A"}
                   </li>
                 </ul>
               </div>
             </div>
+
+            {/* Three-Day Forecast Toggle */}
             <div
               className={showWholeForecast ? "card threedayforecast" : "card"}
             >
               {showWholeForecast && (
                 <>
-                  <div className="flex flex-row justify-center">
-                    <figure>
-                      <img
-                        src={data.forecast.forecastday[0].day.condition.icon}
-                        alt="weather icon"
-                      ></img>
-                    </figure>
-                  </div>
-                  <ul>
-                    <li key={uuidv4()}>{data.forecast.forecastday[0].date}</li>
-                    <li key={uuidv4()}>
-                      {" "}
-                      {data.forecast.forecastday[0].day.condition.text}.
-                    </li>
-                    <li key={uuidv4()}>
-                      Sunrise: {data.forecast.forecastday[0].astro.sunrise}
-                    </li>
-                    <li key={uuidv4()}>
-                      Sunset: {data.forecast.forecastday[0].astro.sunset}
-                    </li>
-                  </ul>
-                  <div className="flex flex-row justify-center">
-                    <figure>
-                      <img
-                        src={data.forecast.forecastday[1].day.condition.icon}
-                        alt="weather icon"
-                      ></img>
-                    </figure>
-                  </div>
-                  <ul>
-                    <li key={uuidv4()}>{data.forecast.forecastday[1].date}</li>
-                    <li key={uuidv4()}>
-                      {" "}
-                      {data.forecast.forecastday[1].day.condition.text}.
-                    </li>
-                    <li key={uuidv4()}>
-                      Sunrise: {data.forecast.forecastday[1].astro.sunrise}
-                    </li>
-                    <li key={uuidv4()}>
-                      Sunset: {data.forecast.forecastday[1].astro.sunset}
-                    </li>
-                  </ul>
-                  <div className="flex flex-row justify-center">
-                    <figure>
-                      <img
-                        src={data.forecast.forecastday[2].day.condition.icon}
-                        alt="weather icon"
-                      ></img>
-                    </figure>
-                  </div>
-                  <ul>
-                    <li key={uuidv4()}>{data.forecast.forecastday[2].date}</li>
-                    <li key={uuidv4()}>
-                      {" "}
-                      {data.forecast.forecastday[2].day.condition.text}.
-                    </li>
-                    <li key={uuidv4()}>
-                      Sunrise: {data.forecast.forecastday[2].astro.sunrise}
-                    </li>
-                    <li key={uuidv4()}>
-                      Sunset: {data.forecast.forecastday[2].astro.sunset}
-                    </li>
-                  </ul>
+                  {[0, 1, 2].map((index) => (
+                    <div key={uuidv4()}>
+                      <div className="flex flex-row justify-center">
+                        <figure>
+                          <img
+                            src={
+                              data?.forecast?.forecastday?.[index]?.day
+                                ?.condition?.icon || ""
+                            }
+                            alt="weather icon"
+                          />
+                        </figure>
+                      </div>
+                      <ul>
+                        <li key={uuidv4()}>
+                          {data?.forecast?.forecastday?.[index]?.date || "N/A"}
+                        </li>
+                        <li key={uuidv4()}>
+                          {data?.forecast?.forecastday?.[index]?.day?.condition
+                            ?.text || "N/A"}
+                        </li>
+                        <li key={uuidv4()}>
+                          Sunrise:{" "}
+                          {data?.forecast?.forecastday?.[index]?.astro
+                            ?.sunrise || "N/A"}
+                        </li>
+                        <li key={uuidv4()}>
+                          Sunset:{" "}
+                          {data?.forecast?.forecastday?.[index]?.astro
+                            ?.sunset || "N/A"}
+                        </li>
+                      </ul>
+                    </div>
+                  ))}
                 </>
               )}
             </div>
+
+            {/* Toggle Button */}
             <div className="py-4">
               <button
                 type="button"
@@ -221,30 +157,36 @@ export function DisplayWeather(props: any) {
               </button>
             </div>
 
+            {/* Hourly Forecast */}
             <div className="flex flex-wrap max-w-full py-4" id="hourly">
-              {data.forecast.forecastday[0].hour.map((hour: any) => (
-                <div className="flex-none w-1/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs py-4">
+              {data?.forecast?.forecastday?.[0]?.hour?.map((hour: any) => (
+                <div
+                  key={uuidv4()}
+                  className="flex-none w-1/3 md:w-1/5 md:pb-4 justify-center mx-auto text-xs py-4"
+                >
                   <ul className="hourly-column">
-                    <li className="font-bold text-md" key={uuidv4()}>
-                      {hour.condition.text}
+                    <li className="font-bold text-md">
+                      {hour?.condition?.text || "N/A"}
                     </li>
                     <li key={uuidv4()}>
                       <figure>
-                        <img src={hour.condition.icon} alt="weather icon"></img>
+                        <img
+                          src={hour?.condition?.icon || ""}
+                          alt="weather icon"
+                        />
                       </figure>
                     </li>
-                    <li key={uuidv4()}>{hour.time}</li>
+                    <li key={uuidv4()}>{hour?.time || "N/A"}</li>
                     <li key={uuidv4()}>
-                      {" "}
                       {props.tempUnit === "temp_c"
-                        ? hour.temp_c + " C °."
-                        : hour.temp_f + " F °."}{" "}
+                        ? `${hour?.temp_c ?? "N/A"} C°`
+                        : `${hour?.temp_f ?? "N/A"} F°`}
                     </li>
                   </ul>
                 </div>
-              ))}
+              )) || <p>No hourly forecast available.</p>}
             </div>
-          </>
+          </div>
         );
       })}
     </>
